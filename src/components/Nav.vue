@@ -42,15 +42,14 @@ export default {
 <style lang="scss" scoped>
 
 .nav {
-    max-width: 1200px;
     width: 100%;
     padding: 20px 0;
     background: var(--nav-bg);
     margin: 0 auto;
-    border-radius: 0px 0px 8px 8px;
     position: sticky;
     top: 0;
     left: 0;
+    z-index: 2024;
 
     .row {
         column-gap: 95px;
@@ -70,6 +69,7 @@ export default {
             color: var(--main-gray);
             text-transform: capitalize;
             transition: .4s;
+            font-weight: 500;
 
             &:hover {
                 color: var(--main-green);
@@ -83,7 +83,7 @@ export default {
         align-items: center;
 
         &-item {
-            font-size: 25px;
+            font-size: 22px;
         }
     }
 }
