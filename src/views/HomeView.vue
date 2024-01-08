@@ -6,7 +6,7 @@
 
 <script>
 import { collection, onSnapshot } from 'firebase/firestore';
-import db from '../assets/js/firebase.js';
+import db from '@/assets/js/firebase.js';
 
 export default {
   name: 'HomeView',
@@ -15,7 +15,7 @@ export default {
       syncTitle: ''
     }
   },
-  mounted() {    
+  created() {    
     onSnapshot(collection(db, 'homePage'), snapshot => {
       snapshot.docs.map(doc => this.syncTitle = doc.data().title)
     })
