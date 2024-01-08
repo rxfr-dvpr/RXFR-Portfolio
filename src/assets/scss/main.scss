@@ -4,6 +4,9 @@
     --main-black: #080808;
     --main-white: #fff;
     --main-font: 'IBM Plex Mono', monospace;
+    --main-gray: #A7A7A7;
+    --main-green: #3F8E00;
+    --nav-bg: #1b1b1b;
 }
 
 * {
@@ -13,8 +16,49 @@
     color: var(--main-white);
 }
 
-
 html {
     font-family: var(--main-font);
     background: var(--main-black);
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1235px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.web-links-item {
+    i {
+        transition: .4s;
+        color: var(--main-gray);
+        -webkit-transition: .4s;
+        -moz-transition: .4s;
+        -ms-transition: .4s;
+        -o-transition: .4s;
+}
+
+    &:hover {
+        i {
+            color: var(--main-green);
+        }
+    }
 }
