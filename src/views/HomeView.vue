@@ -5,8 +5,10 @@
 
   <main class="main">
     <About :obj="aboutObj"/>
+
+    <Skills :obj="skillsObj"/>
     
-    <h1>{{ syncTitle }}</h1>
+    <h1 class="sync-title">{{ syncTitle }}</h1>
   </main>
 </template>
 
@@ -16,6 +18,7 @@ import db from '@/assets/js/firebase.js';
 import Nav from '@/components/Nav.vue';
 import Header from '@/components/Header.vue';
 import About from '@/components/About.vue';
+import Skills from '@/components/Skills.vue';
 
 export default {
   name: 'HomeView',
@@ -25,7 +28,8 @@ export default {
       navList: [],
       webLinks: [],
       headerObj: {},
-      aboutObj: {}
+      aboutObj: {},
+      skillsObj: {}
     }
   },
   created() {    
@@ -45,13 +49,24 @@ export default {
     })
 
     onSnapshot(collection(db, 'About'), snapshot => {
-      snapshot.docs.map(doc => this.aboutObj = {title: doc.data().title, txt: doc.data().txt})
+      snapshot.docs.map(doc => {
+        this.aboutObj = {title: doc.data().title, txt: doc.data().txt}
+        this.skillsObj.techIcons = doc.data().techIcons
+      })
+    })
+
+    onSnapshot(collection(db, 'Skills'), snapshot => {
+      snapshot.docs.map(doc => {
+        this.skillsObj.title = doc.data().title
+        this.skillsObj.txt = doc.data().txt
+      })
     })
   },
   components: {
     Nav,
     Header,
-    About
+    About,
+    Skills
   }
 }
 </script>
@@ -60,9 +75,13 @@ export default {
 
 .main {
   width: 100%;
-  height: 50dvh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 150px;
+}
+
+.sync-title {
+  text-align: center;
 }
 
 </style>

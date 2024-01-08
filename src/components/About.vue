@@ -1,8 +1,8 @@
 <template>
-  <section class="about__section">
+  <section class="about__section" id="about">
     <div class="container">
         <div class="row">
-            <h2 class="about-title" v-html="obj.title"></h2>
+            <h2 class="about-title all-title" v-html="obj.title"></h2>
             <p class="about-txt" v-html="obj.txt"></p>
         </div>
     </div>
@@ -31,8 +31,6 @@ export default {
     
     .row {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
         row-gap: 40px;
     }
 
@@ -41,13 +39,11 @@ export default {
         width: 100%;
     }
 
-    .about-title {
-        font-size: 35px;
-    }
-
     .about-txt {
         line-height: 130%;
         color: var(--main-gray);
+        margin-left: auto;
+        text-align: end;
     }
 }
 

@@ -1,10 +1,10 @@
 <template>
-  <header class="header">
+  <header class="header" id="home">
     <div class="container">
         <div class="row">
             <img :src="obj.img" alt="" class="header-img">
 
-            <p class="header-txt" v-html="obj.txt"></p>
+            <p class="header-txt all-title" v-html="obj.txt"></p>
         </div>
     </div>
   </header>
@@ -46,7 +46,6 @@ export default {
 
     &-txt {
         max-width: 450px;
-        font-size: 35px;
         row-gap: 5px;
         font-weight: 600;
         transition: .4s;
