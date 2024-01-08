@@ -2,7 +2,10 @@
   <Nav :navList="navList" :webLinks="webLinks"/>
 
   <Header :obj="headerObj"/>
+
   <main class="main">
+    <About :obj="aboutObj"/>
+    
     <h1>{{ syncTitle }}</h1>
   </main>
 </template>
@@ -12,6 +15,7 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import db from '@/assets/js/firebase.js';
 import Nav from '@/components/Nav.vue';
 import Header from '@/components/Header.vue';
+import About from '@/components/About.vue';
 
 export default {
   name: 'HomeView',
@@ -20,7 +24,8 @@ export default {
       syncTitle: '',
       navList: [],
       webLinks: [],
-      headerObj: {}
+      headerObj: {},
+      aboutObj: {}
     }
   },
   created() {    
@@ -38,10 +43,15 @@ export default {
     onSnapshot(collection(db, 'Header'), snapshot => {
       snapshot.docs.map(doc => this.headerObj = {img: doc.data().headerImg, txt: doc.data().txt})
     })
+
+    onSnapshot(collection(db, 'About'), snapshot => {
+      snapshot.docs.map(doc => this.aboutObj = {title: doc.data().title, txt: doc.data().txt})
+    })
   },
   components: {
     Nav,
-    Header
+    Header,
+    About
   }
 }
 </script>

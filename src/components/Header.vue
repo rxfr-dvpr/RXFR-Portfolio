@@ -35,6 +35,7 @@ export default {
         column-gap: 50px;
         row-gap: 35px;
         align-items: center;
+        justify-content: center;
     }
 
     &-img {

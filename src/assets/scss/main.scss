@@ -94,3 +94,14 @@ button {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 }
+
+.about-title {
+    .small-title {
+        display: block;
+        font-size: 19px;
+    }
+}
+
+.green-color {
+    color: var(--main-green);
+}
