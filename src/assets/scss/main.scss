@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
     --main-black: #080808;
@@ -6,7 +7,8 @@
     --main-font: 'IBM Plex Mono', monospace;
     --main-gray: #A7A7A7;
     --main-green: #42b883;
-    --nav-bg: rgba(22, 22, 23, 1) ;
+    --nav-bg: rgba(22, 22, 23, 1);
+    --scnd-font: 'Poppins', sans-serif;
 }
 
 
@@ -15,10 +17,10 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--main-white);
+    font-family: var(--main-font);
 }
 
 html {
-    font-family: var(--main-font);
     background: var(--main-black);
     scroll-behavior: smooth;
 }
@@ -50,6 +52,16 @@ button {
 
 .all-title {
     font-size: 33px;
+    text-transform: capitalize;
+}
+
+.all-subtitle {
+    font-size: 17px;
+    color: var(--main-gray);
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
 }
 
 .web-links-item {

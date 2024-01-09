@@ -7,6 +7,8 @@
     <About :obj="aboutObj"/>
 
     <Skills :obj="skillsObj"/>
+
+    <Projects :obj="projectsObj"/>
     
     <h1 class="sync-title">{{ syncTitle }}</h1>
   </main>
@@ -19,6 +21,7 @@ import Nav from '@/components/Nav.vue';
 import Header from '@/components/Header.vue';
 import About from '@/components/About.vue';
 import Skills from '@/components/Skills.vue';
+import Projects from '@/components/Projects.vue';
 
 export default {
   name: 'HomeView',
@@ -29,7 +32,10 @@ export default {
       webLinks: [],
       headerObj: {},
       aboutObj: {},
-      skillsObj: {}
+      skillsObj: {},
+      projectsObj: {
+        list: []
+      }
     }
   },
   created() {    
@@ -61,12 +67,31 @@ export default {
         this.skillsObj.txt = doc.data().txt
       })
     })
+
+    onSnapshot(collection(db, 'Projects'), snapshot => {
+      snapshot.docs.map(doc => {
+        this.projectsObj.title = doc.data().title
+        this.projectsObj.txt = doc.data().txt
+        
+        doc.data().projectsList.map(item => {
+          this.projectsObj.list.push({
+            title: item.title,
+            img: item.img,
+            txt: item.txt,
+            codeLink: item.codeLink,
+            link: item.previewLink,
+          })
+        })
+
+      })
+    })
   },
   components: {
     Nav,
     Header,
     About,
-    Skills
+    Skills,
+    Projects
   }
 }
 </script>
@@ -77,7 +102,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 150px;
+  row-gap: 200px;
 }
 
 .sync-title {

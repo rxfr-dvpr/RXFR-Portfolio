@@ -5,7 +5,7 @@
 
         <div class="skills__descr">
           <h2 class="skills__descr-title all-title">{{ obj.title }}</h2>
-          <p class="skills__descr-txt">{{ obj.txt }}</p>
+          <p class="skills__descr-txt all-subtitle">{{ obj.txt }}</p>
         </div>
 
         <div class="tech-icons">
@@ -50,15 +50,6 @@ export default {
     align-items: center;
     text-align: center;
     row-gap: 10px;
-
-    &-title {
-      text-transform: capitalize;
-    }
-
-    &-txt {
-      font-size: 17px;
-      color: var(--main-gray);
-    }
   }
 
   .tech-icons {
