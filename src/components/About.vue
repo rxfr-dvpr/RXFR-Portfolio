@@ -45,6 +45,10 @@ export default {
         margin-left: auto;
         text-align: end;
     }
+
+    &-title {
+        text-align: center;
+    }
 }
 
 </style>

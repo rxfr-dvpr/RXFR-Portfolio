@@ -9,9 +9,11 @@
                     </li>
                 </ul>
 
-                <div class="web-links">
-                    <a :href="link.url" class="web-links-item" target="_blank"
-                    v-for="link in webLinks" :key="link" v-html="link.icon"></a>
+                <div class="web-collapse">
+                    <div class="web-links">
+                        <a :href="link.url" class="web-links-item" target="_blank"
+                        v-for="link in webLinks" :key="link" v-html="link.icon"></a>
+                    </div>
                 </div>
 
             </div>
@@ -54,6 +56,7 @@ export default {
     .row {
         column-gap: 95px;
         justify-content: center;
+        row-gap: 15px;
     }
 
     &__list {
@@ -65,7 +68,7 @@ export default {
         gap: 15px;
 
         &-link {
-            font-size: 17px;
+            font-size: calc(12px + 7 * (100vw / 1920));
             color: var(--main-gray);
             text-transform: capitalize;
             transition: .4s;
@@ -74,7 +77,16 @@ export default {
             &:hover {
                 color: var(--main-green);
             }
+
+            &.active {
+                color: var(--main-green);
+            }
         }
+    }
+
+    .web-collapse {
+        max-width: max-content;
+        width: 100%;
     }
 
     .web-links {
@@ -83,8 +95,42 @@ export default {
         align-items: center;
 
         &-item {
-            font-size: 22px;
+            font-size: calc(17px + 5 * (100vw / 1920));
         }
+    }
+}
+
+@media (max-width: 992px) {
+    .nav__list {
+        gap: 10px;
+    }
+
+    .web-collapse {
+        max-width: 100% !important;
+        height: max-content;
+        position: fixed;
+        bottom: 5px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: -1;
+
+        .web-links {
+            padding: 8px 15px;
+            background: var(--nav-bg);
+            border-radius: 5px;
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .nav__list-link {
+        font-size: 17px !important; 
+    }
+
+    .web-links-item {
+        font-size: 22px !important;
     }
 }
 

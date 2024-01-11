@@ -70,6 +70,7 @@ export default {
         flex-wrap: wrap;
         column-gap: 45px;
         row-gap: 65px;
+        justify-content: center;
 
         &-item {
             max-width: 370px;

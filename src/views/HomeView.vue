@@ -1,7 +1,9 @@
 <template>
   <Nav :navList="navList" :webLinks="webLinks"/>
 
-  <Header :obj="headerObj"/>
+  <section>
+    <Header :obj="headerObj"/>
+  </section>
 
   <main class="main">
     <About :obj="aboutObj"/>
@@ -40,37 +42,37 @@ export default {
       contactObj: {}
     }
   },
-  created() {    
-    onSnapshot(collection(db, 'homePage'), snapshot => {
+  async created() {
+    await onSnapshot(collection(db, 'homePage'), snapshot => {
       snapshot.docs.map(doc => this.syncTitle = doc.data().title)
     })
 
-    onSnapshot(collection(db, 'Nav'), snapshot => {
+    await onSnapshot(collection(db, 'Nav'), snapshot => {
       snapshot.docs.map(doc  => { 
         this.navList = doc.data().navList
         this.webLinks = doc.data().webLinks
       })
     })
 
-    onSnapshot(collection(db, 'Header'), snapshot => {
+    await onSnapshot(collection(db, 'Header'), snapshot => {
       snapshot.docs.map(doc => this.headerObj = {img: doc.data().headerImg, txt: doc.data().txt})
     })
 
-    onSnapshot(collection(db, 'About'), snapshot => {
+    await onSnapshot(collection(db, 'About'), snapshot => {
       snapshot.docs.map(doc => {
         this.aboutObj = {title: doc.data().title, txt: doc.data().txt}
         this.skillsObj.techIcons = doc.data().techIcons
       })
     })
 
-    onSnapshot(collection(db, 'Skills'), snapshot => {
+    await onSnapshot(collection(db, 'Skills'), snapshot => {
       snapshot.docs.map(doc => {
         this.skillsObj.title = doc.data().title
         this.skillsObj.txt = doc.data().txt
       })
     })
 
-    onSnapshot(collection(db, 'Projects'), snapshot => {
+    await onSnapshot(collection(db, 'Projects'), snapshot => {
       snapshot.docs.map(doc => {
         this.projectsObj.title = doc.data().title
         this.projectsObj.txt = doc.data().txt
@@ -88,12 +90,13 @@ export default {
       })
     })
 
-    onSnapshot(collection(db, 'Contact'), snapshot => {
+    await onSnapshot(collection(db, 'Contact'), snapshot => {
       snapshot.docs.map(doc => {
         this.contactObj.title = doc.data().title
         this.contactObj.subtitle = doc.data().subtitle
       })
     })
+      
   },
   components: {
     Nav,
@@ -113,11 +116,17 @@ export default {
   display: flex;
   flex-direction: column;
   row-gap: 170px;
-  padding-bottom: 50px;
+  padding: 40px 0 80px;
 }
 
 .sync-title {
   text-align: center;
+}
+
+@media (max-width: 992px) {
+  .main {
+    row-gap: 120px;
+  }
 }
 
 </style>

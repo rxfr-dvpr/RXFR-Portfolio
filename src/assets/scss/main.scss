@@ -51,12 +51,12 @@ button {
 }
 
 .all-title {
-    font-size: 33px;
+    font-size: calc(22px + 10 * (100vw / 1920));
     text-transform: capitalize;
 }
 
 .all-subtitle {
-    font-size: 17px;
+    font-size: calc(15px + 2 * (100vw / 1920));
     color: var(--main-gray);
 
     &::first-letter {
@@ -131,4 +131,14 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@media (min-width: 1920px) {
+    .all-title {
+        font-size: 33px !important;
+    }
+
+    .all-subtitle {
+        font-size: 17px !important;
+    }
 }
