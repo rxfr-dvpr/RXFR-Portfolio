@@ -95,7 +95,7 @@ export default {
         align-items: center;
 
         &-item {
-            font-size: calc(20px + 2 * (100vw / 1920));
+            font-size: 22px;
         }
     }
 }
@@ -109,7 +109,7 @@ export default {
         max-width: 100% !important;
         height: max-content;
         position: fixed;
-        bottom: 11px;
+        bottom: 15px;
         left: 0;
         display: flex;
         justify-content: center;
@@ -117,7 +117,7 @@ export default {
         z-index: -1;
 
         .web-links {
-            padding: 8px 15px;
+            padding: 7px 13px;
             background: var(--nav-bg);
             border-radius: 5px;
         }
