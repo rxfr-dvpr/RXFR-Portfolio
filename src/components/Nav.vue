@@ -95,7 +95,7 @@ export default {
         align-items: center;
 
         &-item {
-            font-size: calc(17px + 5 * (100vw / 1920));
+            font-size: calc(20px + 2 * (100vw / 1920));
         }
     }
 }
@@ -109,7 +109,7 @@ export default {
         max-width: 100% !important;
         height: max-content;
         position: fixed;
-        bottom: 5px;
+        bottom: 11px;
         left: 0;
         display: flex;
         justify-content: center;

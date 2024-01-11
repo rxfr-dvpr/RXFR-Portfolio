@@ -68,9 +68,27 @@ export default {
                 axios
                 .post(`https://api.telegram.org/bot${this.token}/sendMessage?chat_id=${this.chatId}&text=${fullMsg}`)
                 .then((res) => {
-                    this.infoObj.email = ''
-                    this.infoObj.number = ''
-                    this.infoObj.msg = ''
+                    document.querySelector('.form-number-inp').type = 'text'
+                    document.querySelectorAll('.all-inp').forEach(item => {
+                        item.style.border = '3px solid #42b883'
+                        item.style.color = '#42b883'
+                    })
+
+                    this.infoObj.email = 'Email Sent'
+                    this.infoObj.number = 'Number Sent'
+                    this.infoObj.msg = 'Message Sent'
+
+                    setTimeout(() => {
+                        document.querySelectorAll('.all-inp').forEach(item => {
+                            item.style.border = '2px solid #D8D8D8'
+                            item.style.color = 'var(--main-black)'
+                        })
+                        
+                        this.infoObj.email = ''
+                        this.infoObj.number = ''
+                        this.infoObj.msg = ''
+                        document.querySelector('.form-number-inp').type = 'number'
+                    }, 2500);
                 })
                 .catch((err) => {
                     console.error(err)
@@ -127,13 +145,13 @@ export default {
             .all-inp {
                 width: 100%;
                 border-radius: 4px;
-                border: 1px solid #D8D8D8;
+                border: 2px solid #D8D8D8;
                 background: #F8F8F8;
                 outline: none;
                 color: var(--main-black);
                 padding: 10px 10px;
                 font-size: 13px;
-                font-weight: 500;
+                font-weight: 600;
 
                 &::placeholder {
                     color: var(--main-gray);

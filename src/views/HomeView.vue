@@ -60,7 +60,7 @@ export default {
 
     await onSnapshot(collection(db, 'About'), snapshot => {
       snapshot.docs.map(doc => {
-        this.aboutObj = {title: doc.data().title, txt: doc.data().txt}
+        this.aboutObj = {title: doc.data().title, txt: doc.data().txt, mainTitle: doc.data().mainTitle}
         this.skillsObj.techIcons = doc.data().techIcons
       })
     })

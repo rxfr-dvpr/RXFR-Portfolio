@@ -2,6 +2,7 @@
   <section class="about__section" id="about">
     <div class="container">
         <div class="row">
+            <h2 class="about__section-title all-title">{{ obj.mainTitle }}</h2>
             <h2 class="about-title all-title" v-html="obj.title"></h2>
             <p class="about-txt" v-html="obj.txt"></p>
         </div>
