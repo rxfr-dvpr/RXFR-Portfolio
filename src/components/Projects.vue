@@ -1,5 +1,5 @@
 <template>
-  <section class="projects__section">
+  <section class="projects__section" id="projects">
     <div class="container">
         <div class="row">
             <div class="projects__descr">
@@ -100,12 +100,22 @@ export default {
                     text-transform: capitalize;
                     font-family: var(--scnd-font);
                     font-weight: 600;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
                 }
     
                 &-txt {
                     color: var(--main-gray);
                     font-size: 15px;
                     font-family: var(--scnd-font);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
                 }
     
                 &-links {

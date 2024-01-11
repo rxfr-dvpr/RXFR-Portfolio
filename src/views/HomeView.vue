@@ -10,7 +10,7 @@
 
     <Projects :obj="projectsObj"/>
     
-    <h1 class="sync-title">{{ syncTitle }}</h1>
+    <Contact :obj="contactObj"/>    
   </main>
 </template>
 
@@ -22,6 +22,7 @@ import Header from '@/components/Header.vue';
 import About from '@/components/About.vue';
 import Skills from '@/components/Skills.vue';
 import Projects from '@/components/Projects.vue';
+import Contact from '@/components/Contact.vue';
 
 export default {
   name: 'HomeView',
@@ -35,7 +36,8 @@ export default {
       skillsObj: {},
       projectsObj: {
         list: []
-      }
+      },
+      contactObj: {}
     }
   },
   created() {    
@@ -85,13 +87,21 @@ export default {
 
       })
     })
+
+    onSnapshot(collection(db, 'Contact'), snapshot => {
+      snapshot.docs.map(doc => {
+        this.contactObj.title = doc.data().title
+        this.contactObj.subtitle = doc.data().subtitle
+      })
+    })
   },
   components: {
     Nav,
     Header,
     About,
     Skills,
-    Projects
+    Projects,
+    Contact
   }
 }
 </script>
@@ -102,7 +112,8 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 200px;
+  row-gap: 170px;
+  padding-bottom: 50px;
 }
 
 .sync-title {
