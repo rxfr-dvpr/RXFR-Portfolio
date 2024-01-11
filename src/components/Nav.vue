@@ -117,9 +117,13 @@ export default {
         z-index: -1;
 
         .web-links {
-            padding: 7px 13px;
+            padding: 5px 13px;
             background: var(--nav-bg);
             border-radius: 5px;
+
+            &-item {
+                font-size: 25px;
+            }
         }
     }
 }
