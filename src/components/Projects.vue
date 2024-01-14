@@ -17,8 +17,8 @@
                         <p class="item-descr-txt">{{ item.txt }}</p>
 
                         <div class="item-descr-links">
-                            <a :href="item.link" target="_blank" class="item-link preview-link">live preview</a>
-                            <a :href="item.codeLink" target="_blank" class="item-link code-link">view code</a>
+                            <a :href="item.link" target="_blank" class="item-link preview-link"><i class="far fa-link"></i> live preview</a>
+                            <a :href="item.codeLink" target="_blank" class="item-link code-link"><i class="fab fa-github"></i> view code</a>
                         </div>
                     </div>
                 </div>
