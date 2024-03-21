@@ -14,7 +14,16 @@
 
                     <div class="item-descr">
                         <p class="item-descr-title">{{ item.title }}</p>
-                        <p class="item-descr-txt">{{ item.txt }}</p>
+                        <p class="item-descr-txt" @click="openedDescr = !openedDescr" :class="{'opened': openedDescr}">{{ item.txt }}</p>
+                        
+                        <div class="project-stack-list">
+                            <p class="stack-list-txt" @click="openedTxt = !openedTxt" :class="{'opened': openedTxt}">
+                                Tech stack:
+                                <span class="stack-list-item" v-for="(stack, id) in item.stackList" :key="id">
+                                    {{ ` ${stack}${id !== item.stackList.length - 1 ? ',' : ''}` }}
+                                </span>
+                            </p>
+                        </div>
 
                         <div class="item-descr-links">
                             <a :href="item.link" target="_blank" class="item-link preview-link"><i class="far fa-link"></i> live preview</a>
@@ -37,6 +46,12 @@ export default {
           type: Object,
           default: {},
           required: true
+        }
+    },
+    data() {
+        return {
+            openedTxt: false,
+            openedDescr: false
         }
     }
 }
@@ -117,6 +132,44 @@ export default {
                     display: -webkit-box;
                     -webkit-line-clamp: 6;
                     -webkit-box-orient: vertical;
+                    cursor: pointer;
+                    user-select: none;
+
+                    &.opened {
+                        overflow: initial !important;
+                        text-overflow: initial !important;
+                        display: initial !important;
+                    }
+                }
+
+                .project-stack-list {
+                    width: 100%;
+                    margin-top: auto;
+                    
+                    .stack-list-txt, .stack-list-item {
+                        font-size: 15px;
+                        font-family: var(--scnd-font);
+                    }
+
+                    .stack-list-txt {
+                        width: 100%;
+                        color: var(--main-green);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        user-select: none;
+
+                        &.opened {
+                            overflow: unset !important;
+                            text-overflow: unset !important;
+                            white-space: initial !important;
+                        }
+                    }
+
+                    .stack-list-item {
+                        color: var(--main-gray);
+                    }
                 }
     
                 &-links {

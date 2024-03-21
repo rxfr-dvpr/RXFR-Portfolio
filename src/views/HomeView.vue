@@ -84,6 +84,7 @@ export default {
             txt: item.txt,
             codeLink: item.codeLink,
             link: item.previewLink,
+            stackList: item.stackList
           })
         })
 
